@@ -1,10 +1,10 @@
-import { createSwitchNavigator, createAppContainer } from 'react-navigation';
-import indexScreen from './src/indexScreen';
+import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
+import IndexScreen from './src/screens/IndexScreen';
+import { Provider } from './src/context/BlogContext';
 const navigator = createStackNavigator(
   {
-    Index: indexScreen,
+    Index: IndexScreen,
   },
   {
     initialRouteName: 'Index',
@@ -14,4 +14,12 @@ const navigator = createStackNavigator(
   }
 );
 
-export default createAppContainer(navigator);
+const App = createAppContainer(navigator);
+
+export default () => {
+  return (
+    <Provider>
+      <App />
+    </Provider>
+  );
+};
